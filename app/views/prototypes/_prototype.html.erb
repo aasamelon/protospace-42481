@@ -1,0 +1,26 @@
+<div class="card">
+  <%= link_to root_path do %>
+    <div class="card__img">
+      <%= link_to prototype_path(prototype) do %>
+        <%= image_tag prototype.image, class: 'prototype-image' if prototype.image.attached? %>
+      <%# image_tag  prototype.image, alt: "プロトタイプの画像" %>
+      <% end %>
+    </div>
+    <div class="card__content">
+      <h2 class="card__title">
+        <%= prototype.title %>
+      </h2>
+      <p class="card__text">
+        <%= prototype.catch_copy %>
+      </p>
+    </div>
+    <div class="card__user">
+      <div class="card__user--icon">
+       <%# image_tag "avatar.png", alt: "ユーザーアイコン" %><%# ユーザーにアイコンがある場合はそれに置き換えてOK %>
+      </div>
+      <p class="card__user--name">
+        <%= link_to prototype.user.name, user_path(prototype.user) %>
+      </p>
+    </div>
+  <% end %>
+</div>
