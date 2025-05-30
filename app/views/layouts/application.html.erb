@@ -21,7 +21,6 @@
           <%# ログインしているときは以下を表示するようにしましょう %>
             <div class="nav__right">
               <% if user_signed_in? %>
-                <span>こんにちは、<%= link_to current_user.name, user_path(current_user) %>さん</span>
                 <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: :nav__logout %>
                 <%= link_to "New Proto", new_prototype_path, class: :nav__btn %>
               <% else %>
@@ -37,6 +36,13 @@
         </div>
       </div>
     </header>
+
+   <% if user_signed_in? %>
+    <div style="margin-left: 120px; margin-top: 10px;">
+      <span>こんにちは、<%= link_to current_user.name, user_path(current_user) %>さん</span> 
+    </div>
+   <% end %>
+
     <%= yield %>
     <footer class="footer">
       <p class="copyright">Copyright © PROTO SPACE All rights reserved.</p>
